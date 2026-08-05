@@ -1,0 +1,47 @@
+{
+  "name": "keybinding-resolver",
+  "author": "lumine-code",
+  "version": "1.0.0",
+  "description": "Show what commands a keybinding resolves to.",
+  "keywords": [
+    "keyboard",
+    "shortcut",
+    "dispatch",
+    "conflict",
+    "debug"
+  ],
+  "repository": "https://github.com/lumine-code/keybinding-resolver",
+  "bugs": {
+    "url": "https://github.com/lumine-code/keybinding-resolver/issues"
+  },
+  "license": "MIT",
+  "main": "./lib/main",
+  "engines": {
+    "lumine": "^1.0.0"
+  },
+  "backgroundTips": [
+    "You can see which command a keystroke resolves to with {{ 'key-binding-resolver:toggle' | keystroke }}"
+  ],
+  "scripts": {
+    "test": "lumine --test spec",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "deserializers": {
+    "keybinding-resolver/KeyBindingResolverView": "deserializeKeyBindingResolverView"
+  },
+  "dependencies": {
+    "@lumine-code/etch": "https://github.com/lumine-code/etch.git#9c74208ad932e0694cb3f7ad575e7205154dea8f",
+    "@lumine-code/fs-plus": "https://github.com/lumine-code/fs-plus.git#742e3e166f56261189ff245a63967b8f1970fadd",
+    "@lumine-code/temp": "https://github.com/lumine-code/node-temp.git#929dfd04196566b21baef93fddc24a19db329bd0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.8.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-n": "^18.2.2",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.6"
+  }
+}
