@@ -126,9 +126,7 @@ describe("KeyBindingResolverView", () => {
       );
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
-        1,
-      );
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(1);
 
       // It should not render the keyup event data because there is no match
       spyOn(etch.getScheduler(), "updateDocument").andCallThrough();
@@ -141,9 +139,7 @@ describe("KeyBindingResolverView", () => {
       );
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
-        1,
-      );
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(1);
     });
 
     it("displays all commands for the keydown event but does not clear for the keyup when there is no keyup binding", async () => {
@@ -180,9 +176,7 @@ describe("KeyBindingResolverView", () => {
       );
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(0);
-      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
-        1,
-      );
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(1);
 
       // It should not render the keyup event data because there is no match
       document.dispatchEvent(
@@ -194,9 +188,7 @@ describe("KeyBindingResolverView", () => {
       );
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(0);
-      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
-        0,
-      );
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(0);
 
       document.dispatchEvent(
         atom.keymaps.constructor.buildKeydownEvent("a", { target: bottomDockElement }),
@@ -207,9 +199,7 @@ describe("KeyBindingResolverView", () => {
       );
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(0);
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
-        0,
-      );
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(0);
 
       document.dispatchEvent(
         atom.keymaps.constructor.buildKeyupEvent("a", { target: bottomDockElement }),
@@ -220,9 +210,7 @@ describe("KeyBindingResolverView", () => {
       );
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(0);
-      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
-        0,
-      );
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(0);
     });
   });
 });
