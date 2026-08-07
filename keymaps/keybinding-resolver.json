@@ -1,5 +1,8 @@
 {
-  "body": {
-    "cmdorctrl-.": "key-binding-resolver:toggle"
+  // `atom-workspace` rather than `body`, which is the fleet's one spelling for
+  // global scope. cmdorctrl-. is a cross-editor convention and stays out of the
+  // alt- tier.
+  "atom-workspace": {
+    "cmdorctrl-.": "keybinding-resolver:toggle"
   }
 }

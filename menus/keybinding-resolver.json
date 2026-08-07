@@ -8,7 +8,7 @@
           "submenu": [
             {
               "label": "Toggle",
-              "command": "key-binding-resolver:toggle"
+              "command": "keybinding-resolver:toggle"
             }
           ]
         }

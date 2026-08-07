@@ -16,14 +16,14 @@ To install `keybinding-resolver` search for _keybinding-resolver_ in the Install
 
 Commands available in `atom-workspace`:
 
-- `key-binding-resolver:toggle`: open or close the keybinding resolver panel.
+- `keybinding-resolver:toggle`: open or close the keybinding resolver panel.
 
 ## Customization
 
 Restyle the resolver panel by adding CSS to your `styles.css`:
 
 ```css
-.key-binding-resolver {
+.keybinding-resolver {
   font-size: 13px;
   .panel-heading {
     background-color: fade(blue, 10%);

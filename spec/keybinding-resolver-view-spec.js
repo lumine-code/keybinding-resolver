@@ -11,43 +11,43 @@ describe("KeyBindingResolverView", () => {
     jasmine.attachToDOM(workspaceElement);
   });
 
-  describe("when the key-binding-resolver:toggle event is triggered", () => {
+  describe("when the keybinding-resolver:toggle event is triggered", () => {
     it("toggles the view", async () => {
       expect(atom.workspace.getBottomDock().isVisible()).toBe(false);
-      expect(bottomDockElement.querySelector(".key-binding-resolver")).not.toExist();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).not.toExist();
 
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
       expect(atom.workspace.getBottomDock().isVisible()).toBe(true);
-      expect(bottomDockElement.querySelector(".key-binding-resolver")).toExist();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).toExist();
 
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
       expect(atom.workspace.getBottomDock().isVisible()).toBe(false);
-      expect(bottomDockElement.querySelector(".key-binding-resolver")).toExist();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).toExist();
 
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
       expect(atom.workspace.getBottomDock().isVisible()).toBe(true);
-      expect(bottomDockElement.querySelector(".key-binding-resolver")).toExist();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).toExist();
     });
 
     it("focuses the view if it is not visible instead of destroying it", async () => {
       expect(atom.workspace.getBottomDock().isVisible()).toBe(false);
-      expect(bottomDockElement.querySelector(".key-binding-resolver")).not.toExist();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).not.toExist();
 
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
       expect(atom.workspace.getBottomDock().isVisible()).toBe(true);
-      expect(bottomDockElement.querySelector(".key-binding-resolver")).toExist();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).toExist();
 
       atom.workspace.getBottomDock().hide();
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
 
       expect(atom.workspace.getBottomDock().isVisible()).toBe(true);
-      expect(bottomDockElement.querySelector(".key-binding-resolver")).toExist();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).toExist();
     });
   });
 
   describe("capturing keybinding events", () => {
     it("captures events when the keybinding resolver is visible", async () => {
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
       const keybindingResolverView = atom.workspace.getBottomDock().getActivePaneItem();
       expect(keybindingResolverView.keybindingDisposables).not.toBe(null);
 
@@ -55,13 +55,13 @@ describe("KeyBindingResolverView", () => {
         atom.keymaps.constructor.buildKeydownEvent("x", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "x",
       );
     });
 
     it("does not capture events when the keybinding resolver is not the active pane item", async () => {
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
       const keybindingResolverView = atom.workspace.getBottomDock().getActivePaneItem();
       expect(keybindingResolverView.keybindingDisposables).not.toBe(null);
 
@@ -73,13 +73,13 @@ describe("KeyBindingResolverView", () => {
         atom.keymaps.constructor.buildKeydownEvent("x", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "x",
       );
     });
 
     it("does not capture events when the dock the keybinding resolver is in is not visible", async () => {
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
       const keybindingResolverView = atom.workspace.getBottomDock().getActivePaneItem();
       expect(keybindingResolverView.keybindingDisposables).not.toBe(null);
 
@@ -91,7 +91,7 @@ describe("KeyBindingResolverView", () => {
         atom.keymaps.constructor.buildKeydownEvent("x", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "x",
       );
     });
@@ -115,18 +115,18 @@ describe("KeyBindingResolverView", () => {
         },
       });
 
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
 
       document.dispatchEvent(
         atom.keymaps.constructor.buildKeydownEvent("x", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "x",
       );
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .used")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unused")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unmatched")).toHaveLength(
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
         1,
       );
 
@@ -136,12 +136,12 @@ describe("KeyBindingResolverView", () => {
         atom.keymaps.constructor.buildKeyupEvent("x", { target: bottomDockElement }),
       );
       expect(etch.getScheduler().updateDocument).not.toHaveBeenCalled();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "x",
       );
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .used")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unused")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unmatched")).toHaveLength(
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
         1,
       );
     });
@@ -168,19 +168,19 @@ describe("KeyBindingResolverView", () => {
         },
       });
 
-      await atom.commands.dispatch(workspaceElement, "key-binding-resolver:toggle");
+      await atom.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
 
       // Not partial because it dispatches the command for `x` immediately due to only having keyup events in remainder of partial match
       document.dispatchEvent(
         atom.keymaps.constructor.buildKeydownEvent("x", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "x",
       );
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .used")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unused")).toHaveLength(0);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unmatched")).toHaveLength(
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(0);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
         1,
       );
 
@@ -189,12 +189,12 @@ describe("KeyBindingResolverView", () => {
         atom.keymaps.constructor.buildKeyupEvent("x", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "x ^x",
       );
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .used")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unused")).toHaveLength(0);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unmatched")).toHaveLength(
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(0);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
         0,
       );
 
@@ -202,12 +202,12 @@ describe("KeyBindingResolverView", () => {
         atom.keymaps.constructor.buildKeydownEvent("a", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "a (partial)",
       );
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .used")).toHaveLength(0);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unused")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unmatched")).toHaveLength(
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(0);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
         0,
       );
 
@@ -215,12 +215,12 @@ describe("KeyBindingResolverView", () => {
         atom.keymaps.constructor.buildKeyupEvent("a", { target: bottomDockElement }),
       );
       await etch.getScheduler().getNextUpdatePromise();
-      expect(bottomDockElement.querySelector(".key-binding-resolver .keystroke").textContent).toBe(
+      expect(bottomDockElement.querySelector(".keybinding-resolver .keystroke").textContent).toBe(
         "a ^a",
       );
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .used")).toHaveLength(1);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unused")).toHaveLength(0);
-      expect(bottomDockElement.querySelectorAll(".key-binding-resolver .unmatched")).toHaveLength(
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .used")).toHaveLength(1);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unused")).toHaveLength(0);
+      expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(
         0,
       );
     });

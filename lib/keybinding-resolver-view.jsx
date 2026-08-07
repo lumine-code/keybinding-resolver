@@ -143,7 +143,7 @@ module.exports = class KeyBindingResolverView {
 
   render() {
     return (
-      <div className="key-binding-resolver">
+      <div className="keybinding-resolver">
         <div className="panel-heading">{this.renderKeystrokes()}</div>
         <div className="panel-body">{this.renderKeyBindings()}</div>
       </div>

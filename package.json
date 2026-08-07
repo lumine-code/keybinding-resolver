@@ -27,7 +27,7 @@
     "lumine": "^1.0.0"
   },
   "backgroundTips": [
-    "You can see which command a keystroke resolves to with {{ 'key-binding-resolver:toggle' | keystroke }}"
+    "You can see which command a keystroke resolves to with {{ 'keybinding-resolver:toggle' | keystroke }}"
   ],
   "scripts": {
     "test": "lumine --test spec",
