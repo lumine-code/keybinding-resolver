@@ -1,7 +1,7 @@
 /** @jsx etch.dom */
 const fs = require("@lumine-code/fs-plus");
 const etch = require("@lumine-code/etch");
-const { CompositeDisposable } = require("atom");
+const { CompositeDisposable } = require("lumine");
 const path = require("path");
 
 module.exports = class KeyBindingResolverView {
@@ -16,7 +16,7 @@ module.exports = class KeyBindingResolverView {
     this.keybindingDisposables = new CompositeDisposable();
 
     this.disposables.add(
-      atom.workspace.getBottomDock().observeActivePaneItem((item) => {
+      lumine.workspace.getBottomDock().observeActivePaneItem((item) => {
         if (item === this) {
           this.attach();
         } else {
@@ -26,9 +26,9 @@ module.exports = class KeyBindingResolverView {
     );
 
     this.disposables.add(
-      atom.workspace.getBottomDock().observeVisible((visible) => {
+      lumine.workspace.getBottomDock().observeVisible((visible) => {
         if (visible) {
-          if (atom.workspace.getBottomDock().getActivePaneItem() === this) this.attach();
+          if (lumine.workspace.getBottomDock().getActivePaneItem() === this) this.attach();
         } else {
           this.detach();
         }
@@ -77,45 +77,47 @@ module.exports = class KeyBindingResolverView {
     this.attached = true;
     this.keybindingDisposables = new CompositeDisposable();
     this.keybindingDisposables.add(
-      atom.keymaps.onDidMatchBinding(({ keystrokes, binding, keyboardEventTarget, eventType }) => {
-        if (eventType === "keyup" && binding == null) {
-          return;
-        }
+      lumine.keymaps.onDidMatchBinding(
+        ({ keystrokes, binding, keyboardEventTarget, eventType }) => {
+          if (eventType === "keyup" && binding == null) {
+            return;
+          }
 
-        const unusedKeyBindings = atom.keymaps
-          .findKeyBindings({ keystrokes, target: keyboardEventTarget })
-          .filter((b) => b !== binding);
+          const unusedKeyBindings = lumine.keymaps
+            .findKeyBindings({ keystrokes, target: keyboardEventTarget })
+            .filter((b) => b !== binding);
 
-        const unmatchedKeyBindings = atom.keymaps
-          .findKeyBindings({ keystrokes })
-          .filter((b) => b !== binding && !unusedKeyBindings.includes(b));
+          const unmatchedKeyBindings = lumine.keymaps
+            .findKeyBindings({ keystrokes })
+            .filter((b) => b !== binding && !unusedKeyBindings.includes(b));
 
-        this.update({
-          usedKeyBinding: binding,
-          unusedKeyBindings,
-          unmatchedKeyBindings,
-          keystrokes,
-        });
-      }),
+          this.update({
+            usedKeyBinding: binding,
+            unusedKeyBindings,
+            unmatchedKeyBindings,
+            keystrokes,
+          });
+        },
+      ),
     );
 
     this.keybindingDisposables.add(
-      atom.keymaps.onDidPartiallyMatchBindings(({ keystrokes, partiallyMatchedBindings }) => {
+      lumine.keymaps.onDidPartiallyMatchBindings(({ keystrokes, partiallyMatchedBindings }) => {
         this.update({ keystrokes, partiallyMatchedBindings });
       }),
     );
 
     this.keybindingDisposables.add(
-      atom.keymaps.onDidFailToMatchBinding(({ keystrokes, keyboardEventTarget, eventType }) => {
+      lumine.keymaps.onDidFailToMatchBinding(({ keystrokes, keyboardEventTarget, eventType }) => {
         if (eventType === "keyup") {
           return;
         }
 
-        const unusedKeyBindings = atom.keymaps.findKeyBindings({
+        const unusedKeyBindings = lumine.keymaps.findKeyBindings({
           keystrokes,
           target: keyboardEventTarget,
         });
-        const unmatchedKeyBindings = atom.keymaps
+        const unmatchedKeyBindings = lumine.keymaps
           .findKeyBindings({ keystrokes })
           .filter((b) => !unusedKeyBindings.includes(b));
 
@@ -237,18 +239,18 @@ module.exports = class KeyBindingResolverView {
   }
 
   isInAsarArchive(pathToCheck) {
-    const resourcePath = atom.app.getResourcePath();
+    const resourcePath = lumine.app.getResourcePath();
     return (
       pathToCheck.startsWith(`${resourcePath}${path.sep}`) && path.extname(resourcePath) === ".asar"
     );
   }
 
   extractBundledKeymap(bundledKeymapPath) {
-    const metadata = require(path.join(atom.app.getResourcePath(), "package.json"));
-    const bundledKeymaps = metadata ? metadata._atomKeymaps : {};
+    const metadata = require(path.join(lumine.app.getResourcePath(), "package.json"));
+    const bundledKeymaps = metadata ? metadata._lumineKeymaps : {};
     const keymapName = path.basename(bundledKeymapPath);
     const extractedKeymapPath = path.join(
-      require("@lumine-code/temp").mkdirSync("atom-bundled-keymap-"),
+      require("@lumine-code/temp").mkdirSync("lumine-bundled-keymap-"),
       keymapName,
     );
     fs.writeFileSync(
@@ -261,10 +263,10 @@ module.exports = class KeyBindingResolverView {
   extractBundledPackageKeymap(keymapRelativePath) {
     const packageName = keymapRelativePath.split(path.sep)[1];
     const keymapName = path.basename(keymapRelativePath);
-    const metadata = atom.packages.packagesCache[packageName] || {};
+    const metadata = lumine.packages.packagesCache[packageName] || {};
     const keymaps = metadata.keymaps || {};
     const extractedKeymapPath = path.join(
-      require("@lumine-code/temp").mkdirSync("atom-bundled-keymap-"),
+      require("@lumine-code/temp").mkdirSync("lumine-bundled-keymap-"),
       keymapName,
     );
     fs.writeFileSync(
@@ -283,12 +285,12 @@ module.exports = class KeyBindingResolverView {
       keymapPath = this.extractBundledKeymap(keymapPath.replace("core:", ""));
     }
 
-    atom.workspace.open(keymapPath);
+    lumine.workspace.open(keymapPath);
   }
 
   copyKeybinding(binding) {
     let content;
-    const keymapExtension = path.extname(atom.keymaps.getUserKeymapPath());
+    const keymapExtension = path.extname(lumine.keymaps.getUserKeymapPath());
     let escapedKeystrokes = binding.keystrokes.replace(/\\/g, "\\\\"); // Escape backslashes
     if (keymapExtension === ".cson") {
       content = `\
@@ -303,7 +305,7 @@ module.exports = class KeyBindingResolverView {
 `;
     }
 
-    atom.notifications.addInfo("Keybinding Copied");
-    return atom.clipboard.write(content);
+    lumine.notifications.addInfo("Keybinding Copied");
+    return lumine.clipboard.write(content);
   }
 };

@@ -14,7 +14,7 @@ To install `keybinding-resolver` search for _keybinding-resolver_ in the Install
 
 ## Commands
 
-Commands available in `atom-workspace`:
+Commands available in `lumine-workspace`:
 
 - `keybinding-resolver:toggle`: open or close the keybinding resolver panel.
 

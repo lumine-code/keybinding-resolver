@@ -1,8 +1,8 @@
 {
-  // `atom-workspace` rather than `body`, which is the fleet's one spelling for
+  // `lumine-workspace` rather than `body`, which is the fleet's one spelling for
   // global scope. cmdorctrl-. is a cross-editor convention and stays out of the
   // alt- tier.
-  "atom-workspace": {
+  "lumine-workspace": {
     "cmdorctrl-.": "keybinding-resolver:toggle"
   }
 }
