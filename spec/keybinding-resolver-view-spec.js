@@ -1,4 +1,3 @@
-const { it, fit, ffit, beforeEach } = require("./async-spec-helpers"); // eslint-disable-line no-unused-vars
 const etch = require("@lumine-code/etch");
 
 describe("KeyBindingResolverView", () => {
@@ -129,7 +128,7 @@ describe("KeyBindingResolverView", () => {
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(1);
 
       // It should not render the keyup event data because there is no match
-      spyOn(etch.getScheduler(), "updateDocument").andCallThrough();
+      spyOn(etch.getScheduler(), "updateDocument").and.callThrough();
       document.dispatchEvent(
         lumine.keymaps.constructor.buildKeyupEvent("x", { target: bottomDockElement }),
       );
