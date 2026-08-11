@@ -239,14 +239,14 @@ module.exports = class KeyBindingResolverView {
   }
 
   isInAsarArchive(pathToCheck) {
-    const resourcePath = lumine.app.getResourcePath();
+    const resourcePath = lumine.application.getResourcePath();
     return (
       pathToCheck.startsWith(`${resourcePath}${path.sep}`) && path.extname(resourcePath) === ".asar"
     );
   }
 
   extractBundledKeymap(bundledKeymapPath) {
-    const metadata = require(path.join(lumine.app.getResourcePath(), "package.json"));
+    const metadata = require(path.join(lumine.application.getResourcePath(), "package.json"));
     const bundledKeymaps = metadata ? metadata._lumineKeymaps : {};
     const keymapName = path.basename(bundledKeymapPath);
     const extractedKeymapPath = path.join(
