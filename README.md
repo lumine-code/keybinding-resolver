@@ -10,7 +10,7 @@ Show what commands a keybinding resolves to.
 
 ## Installation
 
-To install `keybinding-resolver` search for _keybinding-resolver_ in the Install pane of the Lumine settings or run `lumine --install lumine-code/keybinding-resolver`.
+To install `keybinding-resolver` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/keybinding-resolver`.
 
 ## Commands
 
