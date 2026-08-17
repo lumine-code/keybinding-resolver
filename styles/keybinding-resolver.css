@@ -5,6 +5,13 @@
     position: sticky;
     top: 0;
     z-index: 1;
+
+    /* tone down the theme's solid info badge: the keystroke updates on every
+       keypress, so a filled highlight flashes too loudly for a passive readout */
+    .keystroke.highlight-info {
+      color: var(--text-color-info);
+      background-color: color-mix(in srgb, var(--background-color-info) 15%, transparent);
+    }
   }
 
   .panel-body {
