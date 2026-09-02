@@ -141,7 +141,7 @@ describe("KeyBindingResolverView", () => {
       expect(bottomDockElement.querySelectorAll(".keybinding-resolver .unmatched")).toHaveLength(1);
     });
 
-    it("displays all commands for the keydown event but does not clear for the keyup when there is no keyup binding", async () => {
+    it("displays keyup bindings and dispatches keydown matches with keyup-only remainders", async () => {
       lumine.keymaps.add("name", {
         ".workspace": {
           x: "match-1",
