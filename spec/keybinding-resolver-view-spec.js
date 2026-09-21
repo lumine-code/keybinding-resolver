@@ -42,6 +42,20 @@ describe("KeyBindingResolverView", () => {
       expect(lumine.workspace.getBottomDock().isVisible()).toBe(true);
       expect(bottomDockElement.querySelector(".keybinding-resolver")).toExist();
     });
+
+    it("destroys the old view when the package is deactivated", async () => {
+      await lumine.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
+      const oldView = lumine.workspace.getBottomDock().getActivePaneItem();
+
+      await lumine.packages.deactivatePackage("keybinding-resolver");
+
+      expect(lumine.workspace.paneForItem(oldView)).toBeUndefined();
+      expect(bottomDockElement.querySelector(".keybinding-resolver")).not.toExist();
+
+      await lumine.packages.activatePackage("keybinding-resolver");
+      await lumine.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
+      expect(lumine.workspace.getBottomDock().getActivePaneItem()).not.toBe(oldView);
+    });
   });
 
   describe("capturing keybinding events", () => {
