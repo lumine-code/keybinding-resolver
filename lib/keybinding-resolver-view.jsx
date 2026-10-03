@@ -250,7 +250,7 @@ module.exports = class KeyBindingResolverView {
     const bundledKeymaps = metadata ? metadata._lumineKeymaps : {};
     const keymapName = path.basename(bundledKeymapPath);
     const extractedKeymapPath = path.join(
-      require("@lumine-code/temp").mkdirSync("lumine-bundled-keymap-"),
+      require("@lumine-code/fs-temp").mkdirSync("lumine-bundled-keymap-"),
       keymapName,
     );
     fs.writeFileSync(
@@ -266,7 +266,7 @@ module.exports = class KeyBindingResolverView {
     const metadata = lumine.packages.packagesCache[packageName] || {};
     const keymaps = metadata.keymaps || {};
     const extractedKeymapPath = path.join(
-      require("@lumine-code/temp").mkdirSync("lumine-bundled-keymap-"),
+      require("@lumine-code/fs-temp").mkdirSync("lumine-bundled-keymap-"),
       keymapName,
     );
     fs.writeFileSync(
