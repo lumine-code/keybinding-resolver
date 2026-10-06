@@ -15,7 +15,7 @@
   }
 
   .panel-body {
-    padding: 0 var(--component-padding);
+    padding: 0 var(--ui-spacing);
   }
 
   table {
@@ -37,10 +37,10 @@
 
     /* move icon so text is aligned when wrapped */
     .command {
-      padding-left: var(--component-icon-size);
+      padding-left: var(--ui-icon-size);
       &:before {
         position: absolute;
-        margin-left: calc(-1 * var(--component-icon-size));
+        margin-left: calc(-1 * var(--ui-icon-size));
       }
     }
 
