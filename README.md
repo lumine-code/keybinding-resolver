@@ -2,6 +2,8 @@
 
 Show what commands a keybinding resolves to.
 
+Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/keybinding-resolver`).
+
 ## Features
 
 - **Keybinding inspection**: displays every command a pressed keybinding maps to.
