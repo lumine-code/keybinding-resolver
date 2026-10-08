@@ -11,6 +11,163 @@ describe("KeyBindingResolverView", () => {
   });
 
   describe("when the keybinding-resolver:toggle event is triggered", () => {
+    function deferred() {
+      let resolve;
+      const promise = new Promise((done) => {
+        resolve = done;
+      });
+      return { promise, resolve };
+    }
+
+    it("does not reopen the dock when an open finishes after deactivation", async () => {
+      const main = lumine.packages.getActivePackage("keybinding-resolver").mainModule;
+      const originalOpen = lumine.workspace.open.bind(lumine.workspace);
+      const completion = deferred();
+      let openedItem;
+      spyOn(lumine.workspace, "open").and.callFake(async (...args) => {
+        openedItem = await originalOpen(...args);
+        await completion.promise;
+        return openedItem;
+      });
+      const pending = main.toggle();
+      await conditionPromise(() => openedItem, "the resolver pane item to open");
+      await lumine.packages.deactivatePackage("keybinding-resolver");
+      lumine.workspace.getBottomDock().hide();
+
+      completion.resolve();
+      await pending;
+
+      expect(lumine.workspace.getBottomDock().isVisible()).toBe(false);
+      expect(lumine.workspace.paneForItem(openedItem)).toBeUndefined();
+    });
+
+    it("disposes a late-created resolver item without revealing the dock", async () => {
+      await lumine.packages.deactivatePackage("keybinding-resolver");
+      const addOpener = spyOn(lumine.workspace, "addOpener").and.callThrough();
+      const main = (await lumine.packages.activatePackage("keybinding-resolver")).mainModule;
+      const opener = addOpener.calls.mostRecent().args[0];
+      const originalOpeners = lumine.workspace.getOpeners();
+      const completion = deferred();
+      let lateItem;
+      spyOn(lumine.workspace, "getOpeners").and.returnValue([
+        async (uri, options) => {
+          lateItem = opener(uri, options);
+          if (!lateItem) return;
+          await completion.promise;
+          return lateItem;
+        },
+        ...originalOpeners,
+      ]);
+      const pending = main.toggle();
+      await conditionPromise(() => lateItem, "the delayed opener to create its resolver item");
+      await lumine.packages.deactivatePackage("keybinding-resolver");
+
+      completion.resolve();
+      await pending;
+
+      expect(lumine.workspace.getBottomDock().isVisible()).toBe(false);
+      expect(lumine.workspace.paneForItem(lateItem)).toBeUndefined();
+      expect(lateItem.disposables.disposed).toBe(true);
+    });
+
+    it("does not alter a newer activation or destroy its resolver item", async () => {
+      const main = lumine.packages.getActivePackage("keybinding-resolver").mainModule;
+      const originalOpen = lumine.workspace.open.bind(lumine.workspace);
+      const completion = deferred();
+      let openedItem;
+      const open = spyOn(lumine.workspace, "open").and.callFake(async (...args) => {
+        openedItem = await originalOpen(...args);
+        await completion.promise;
+        return openedItem;
+      });
+      const pending = main.toggle();
+      await conditionPromise(() => openedItem, "the retired resolver item");
+      await lumine.packages.deactivatePackage("keybinding-resolver");
+      const current = (await lumine.packages.activatePackage("keybinding-resolver")).mainModule;
+      open.and.callFake(originalOpen);
+      await current.toggle();
+      const currentItem = lumine.workspace.getBottomDock().getActivePaneItem();
+      expect(currentItem).not.toBe(openedItem);
+      lumine.workspace.getBottomDock().hide();
+
+      completion.resolve();
+      await pending;
+
+      expect(lumine.workspace.getBottomDock().isVisible()).toBe(false);
+      expect(lumine.workspace.paneForItem(currentItem)).toBeDefined();
+      expect(currentItem.disposables.disposed).toBe(false);
+    });
+
+    it("keeps a newer hide while the first toggle is still waiting", async () => {
+      const main = lumine.packages.getActivePackage("keybinding-resolver").mainModule;
+      const originalOpen = lumine.workspace.open.bind(lumine.workspace);
+      const completion = deferred();
+      let item;
+      spyOn(lumine.workspace, "open").and.callFake(async (...args) => {
+        item = await originalOpen(...args);
+        await completion.promise;
+        return item;
+      });
+      const pending = main.toggle();
+      await conditionPromise(() => item, "the pending resolver item");
+      lumine.workspace.getBottomDock().show();
+      await main.toggle();
+      expect(lumine.workspace.getBottomDock().isVisible()).toBe(false);
+
+      completion.resolve();
+      await pending;
+
+      expect(lumine.workspace.getBottomDock().isVisible()).toBe(false);
+      expect(lumine.workspace.paneForItem(item)).toBeDefined();
+    });
+
+    it("keeps an adopted late item when its stale destruction listener finishes", async () => {
+      await lumine.packages.deactivatePackage("keybinding-resolver");
+      const addOpener = spyOn(lumine.workspace, "addOpener").and.callThrough();
+      const oldMain = (await lumine.packages.activatePackage("keybinding-resolver")).mainModule;
+      const opener = addOpener.calls.mostRecent().args[0];
+      const originalOpeners = lumine.workspace.getOpeners();
+      const opening = deferred();
+      const closing = deferred();
+      let lateItem,
+        destroying = false;
+      spyOn(lumine.workspace, "getOpeners").and.returnValue([
+        async (uri, options) => {
+          lateItem = opener(uri, options);
+          if (!lateItem) return;
+          await opening.promise;
+          return lateItem;
+        },
+        ...originalOpeners,
+      ]);
+      const pending = oldMain.toggle();
+      await conditionPromise(() => lateItem);
+      await lumine.packages.deactivatePackage("keybinding-resolver");
+      const pane = lumine.workspace.getBottomDock().getActivePane();
+      const listener = pane.onWillDestroyItem(({ item }) => {
+        if (item === lateItem) {
+          destroying = true;
+          return closing.promise;
+        }
+      });
+      try {
+        opening.resolve();
+        await conditionPromise(() => destroying, "the stale destruction listener");
+        const current = (await lumine.packages.activatePackage("keybinding-resolver")).mainModule;
+        await current.toggle();
+        expect(lumine.workspace.getBottomDock().getActivePaneItem()).toBe(lateItem);
+        closing.resolve();
+        await pending;
+        expect(lumine.workspace.paneForItem(lateItem)).toBe(pane);
+        expect(lateItem.disposables.disposed).toBe(false);
+      } finally {
+        listener.dispose();
+        opening.resolve();
+        closing.resolve();
+        await pending;
+      }
+    });
+
     it("toggles the view", async () => {
       expect(lumine.workspace.getBottomDock().isVisible()).toBe(false);
       expect(bottomDockElement.querySelector(".keybinding-resolver")).not.toExist();
