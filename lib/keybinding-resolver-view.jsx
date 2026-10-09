@@ -291,16 +291,17 @@ module.exports = class KeyBindingResolverView {
   copyKeybinding(binding) {
     let content;
     const keymapExtension = path.extname(lumine.keymaps.getUserKeymapPath());
-    let escapedKeystrokes = binding.keystrokes.replace(/\\/g, "\\\\"); // Escape backslashes
     if (keymapExtension === ".cson") {
+      const quote = (value) =>
+        `'${value.replace(/[\\'\r\n\t]/g, (character) => ({ "\\": "\\\\", "'": "\\'", "\r": "\\r", "\n": "\\n", "\t": "\\t" })[character])}'`;
       content = `\
-'${binding.selector}':
-  '${escapedKeystrokes}': '${binding.command}'
+${quote(binding.selector)}:
+  ${quote(binding.keystrokes)}: ${quote(binding.command)}
 `;
     } else {
       content = `\
-"${binding.selector}": {
-  "${escapedKeystrokes}": "${binding.command}"
+${JSON.stringify(binding.selector)}: {
+  ${JSON.stringify(binding.keystrokes)}: ${JSON.stringify(binding.command)}
 }
 `;
     }
