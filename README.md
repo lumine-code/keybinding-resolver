@@ -28,7 +28,7 @@ Restyle the resolver panel by adding CSS to your `styles.css`:
 .keybinding-resolver {
   font-size: 13px;
   .panel-heading {
-    background-color: fade(blue, 10%);
+    background-color: color-mix(in srgb, blue 10%, transparent);
   }
 }
 ```
