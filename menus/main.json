@@ -8,7 +8,9 @@
           "submenu": [
             {
               "label": "Keybinding Resolver",
-              "command": "keybinding-resolver:toggle"
+              "command": "keybinding-resolver:toggle",
+              "group": "panels",
+              "order": 10
             }
           ]
         }
