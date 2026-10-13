@@ -1,0 +1,17 @@
+{
+  "title": "keybinding-resolver",
+  "description": "Inspect the command and scope resolved by a keyboard shortcut.",
+  "recordedOn": "2026-10-13",
+  "sourceRevision": "86ca6ec27c8ae58656051bc3a8358d10ec23fe79",
+  "mode": "normal",
+  "fontSettings": "default",
+  "themeSourceRevision": "6564a9e21899b5541e9c8f8006f9be6d6d72e6ad",
+  "images": [
+    {
+      "file": "demo.png",
+      "label": "Inspect the command and scope resolved by a keyboard shortcut.",
+      "width": 1100,
+      "height": 500
+    }
+  ]
+}

@@ -10,6 +10,8 @@ Fork of [pulsar-edit/pulsar](https://github.com/pulsar-edit/pulsar) (`packages/k
 - **Resolution order**: highlights which binding wins and which are shadowed.
 - **Copy directive**: copies the selected keybinding directive so you can paste it into a keymap file.
 
+![Inspect the command and scope resolved by a keyboard shortcut.](.github/demo.png)
+
 ## Installation
 
 To install `keybinding-resolver` search for it in the Install pane of the Lumine settings, or run the command `lumine --install lumine-code/keybinding-resolver`.
