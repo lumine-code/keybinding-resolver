@@ -1,18 +1,13 @@
 {
   "menu": [
     {
-      "label": "View",
+      "label": "Developer",
       "submenu": [
         {
-          "label": "Toggle View",
-          "submenu": [
-            {
-              "label": "Keybinding Resolver",
-              "command": "keybinding-resolver:toggle",
-              "group": "panels",
-              "order": 10
-            }
-          ]
+          "label": "Toggle Keyboard Shortcut Inspector",
+          "command": "keybinding-resolver:toggle",
+          "group": "diagnostics",
+          "order": 30
         }
       ]
     },
@@ -23,7 +18,7 @@
           "label": "Keybinding Resolver",
           "submenu": [
             {
-              "label": "Toggle",
+              "label": "Toggle Keyboard Shortcut Inspector",
               "command": "keybinding-resolver:toggle"
             }
           ]
