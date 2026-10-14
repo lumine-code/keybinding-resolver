@@ -1,17 +1,66 @@
 {
   "title": "keybinding-resolver",
   "description": "Inspect the command and scope resolved by a keyboard shortcut.",
-  "recordedOn": "2026-10-13",
-  "sourceRevision": "86ca6ec27c8ae58656051bc3a8358d10ec23fe79",
+  "recordedOn": "2026-10-14",
+  "sourceRevision": "326aa373b22f4f74a544f56f2fbf31b8920f6af5",
+  "themeSourceRevision": "7fbd047a87ecf1367c896b19ff270cdc28d319f7",
   "mode": "normal",
   "fontSettings": "default",
-  "themeSourceRevision": "6564a9e21899b5541e9c8f8006f9be6d6d72e6ad",
+  "scenario": "demo.js",
+  "recipeHash": "d732df8128bdc91ff538bcf5661385716746501d10a65025e95a0c6bd3fab255",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "electron": "44.7.0",
+    "chrome": "152.0.7977.130",
+    "devicePixelRatio": 1,
+    "locale": "en-GB",
+    "fontFamily": "Fira Code, Menlo, DejaVu Sans Mono, Consolas, monospace",
+    "fontSize": 14,
+    "themes": ["one-day-syntax", "one-day-ui"]
+  },
+  "viewport": { "width": 1100, "height": 500 },
+  "cornerRadius": 10,
+  "sources": {
+    "editor": {
+      "revision": "f843acddbced9b8bd7bbe0a96005bb55429694ce",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "package": {
+      "revision": "326aa373b22f4f74a544f56f2fbf31b8920f6af5",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "keybinding-resolver": {
+      "revision": "326aa373b22f4f74a544f56f2fbf31b8920f6af5",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "language-gfm": {
+      "revision": "be723ccf806fdd4a2a06638f6e881c09a53b4409",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "one-theme": {
+      "revision": "7fbd047a87ecf1367c896b19ff270cdc28d319f7",
+      "dirty": false,
+      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "fixtures": [
+    {
+      "file": "more/README.md",
+      "sha256": "ea8b9ffc4ba2581e49f26db71950f3bff3f579ae314f3b21c98a58341f07b698"
+    }
+  ],
   "images": [
     {
       "file": "demo.png",
       "label": "Inspect the command and scope resolved by a keyboard shortcut.",
       "width": 1100,
-      "height": 500
+      "height": 500,
+      "sha256": "7a5ffaa38b10ecbdb4b83e63575924382c21634f2436dba020e40c82d93c66d1"
     }
   ]
 }
