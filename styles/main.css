@@ -5,6 +5,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
+    border-bottom: 1px solid var(--panel-heading-border-color);
 
     /* tone down the theme's solid info badge: the keystroke updates on every
        keypress, so a filled highlight flashes too loudly for a passive readout */
