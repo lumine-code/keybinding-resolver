@@ -8,6 +8,11 @@ module.exports = {
     const { lumine, state, fixture, open } = context;
     state.editor = await open("more/README.md");
     await lumine.project.setPaths([fixture("more")]);
+    const keymap = fixture("more/keymap.json");
+    state.keymap = lumine.keymaps.add(
+      keymap,
+      JSON.parse(require("node:fs").readFileSync(keymap, "utf8")),
+    );
   },
   scenes: [
     {
@@ -28,8 +33,9 @@ module.exports = {
           state.editor.getElement().focus();
           state.editor.getElement().dispatchEvent(
             new KeyboardEvent("keydown", {
-              key: "ArrowDown",
-              code: "ArrowDown",
+              key: "j",
+              code: "KeyJ",
+              altKey: true,
               bubbles: true,
               cancelable: true,
             }),
@@ -43,5 +49,7 @@ module.exports = {
       },
     },
   ],
-  async cleanup() {},
+  async cleanup({ state }) {
+    state.keymap?.dispose();
+  },
 };
