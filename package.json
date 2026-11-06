@@ -44,9 +44,9 @@
     }
   },
   "dependencies": {
-    "@lumine-code/etch": "github:lumine-code/etch#a543b97d4b75e1a7e92251e4998b5425a9714765",
-    "@lumine-code/fs-plus": "github:lumine-code/fs-plus#07f93aa311ecb06bcf34a4dda51a2e5720652746",
-    "@lumine-code/fs-temp": "github:lumine-code/fs-temp#45485c522d8548846b20b2793adacb2146b53dc1"
+    "@lumine-code/etch": "github:lumine-code/etch#d6670187657f33e109570f4dc749bf42b99a0c33",
+    "@lumine-code/fs-plus": "github:lumine-code/fs-plus#a83059c83b18585c9cc8644c4ede87fe64856111",
+    "@lumine-code/fs-temp": "github:lumine-code/fs-temp#1a6b777f19f970a351ce227f4b2acd096546878a"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
