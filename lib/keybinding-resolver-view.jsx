@@ -247,7 +247,7 @@ module.exports = class KeyBindingResolverView {
 
   extractBundledKeymap(bundledKeymapPath) {
     const metadata = require(path.join(lumine.application.getResourcePath(), "package.json"));
-    const bundledKeymaps = metadata ? metadata._lumineKeymaps : {};
+    const bundledKeymaps = metadata?.lumineMetadata?.keymaps || {};
     const keymapName = path.basename(bundledKeymapPath);
     const extractedKeymapPath = path.join(
       require("@lumine-code/fs-temp").mkdirSync("lumine-bundled-keymap-"),
