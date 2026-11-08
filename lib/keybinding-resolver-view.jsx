@@ -147,8 +147,27 @@ module.exports = class KeyBindingResolverView {
     return (
       <div className="keybinding-resolver tab-content-separated">
         <div className="panel-heading">{this.renderKeystrokes()}</div>
-        <div className="panel-body">{this.renderKeyBindings()}</div>
+        {this.hasKeyBindings() ? (
+          <div className="panel-body">{this.renderKeyBindings()}</div>
+        ) : (
+          <div className="panel-empty-state">
+            <background-tips>
+              <ul className="centered background-message">
+                <li>{this.keystrokes ? "No matching keybindings" : "Press any key"}</li>
+              </ul>
+            </background-tips>
+          </div>
+        )}
       </div>
+    );
+  }
+
+  hasKeyBindings() {
+    return Boolean(
+      this.usedKeyBinding ||
+      this.unusedKeyBindings.length ||
+      this.unmatchedKeyBindings.length ||
+      this.partiallyMatchedBindings.length,
     );
   }
 

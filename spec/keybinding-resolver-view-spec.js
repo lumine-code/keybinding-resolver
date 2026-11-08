@@ -10,6 +10,48 @@ describe("KeyBindingResolverView", () => {
     jasmine.attachToDOM(workspaceElement);
   });
 
+  describe("empty results", () => {
+    it("replaces the initial prompt with real binding rows and clears stale results", async () => {
+      await lumine.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
+      const view = lumine.workspace.getBottomDock().getActivePaneItem();
+      const empty = () => view.element.querySelector(".panel-empty-state");
+      expect(empty().textContent).toBe("Press any key");
+      const binding = {
+        command: "example:command",
+        keystrokes: "ctrl-x",
+        selector: "body",
+        source: "example.json",
+      };
+      for (const result of [
+        { usedKeyBinding: binding },
+        { unusedKeyBindings: [binding] },
+        { unmatchedKeyBindings: [binding] },
+        { partiallyMatchedBindings: [binding] },
+      ]) {
+        await view.update({ keystrokes: "ctrl-x", ...result });
+        expect(empty()).toBeNull();
+        expect(view.element.querySelectorAll("tbody tr").length).toBe(1);
+        expect(view.element.textContent).toContain("example:command");
+        await view.update({ keystrokes: "ctrl-z" });
+        expect(empty().textContent).toBe("No matching keybindings");
+        expect(view.element.querySelector("tbody tr")).toBeNull();
+        expect(view.element.querySelector(".panel-heading").textContent).toBe("ctrl-z");
+      }
+    });
+
+    it("starts with the initial prompt again after the previous resolver closes", async () => {
+      await lumine.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
+      const previous = lumine.workspace.getBottomDock().getActivePaneItem();
+      await previous.update({ keystrokes: "ctrl-z" });
+      await lumine.workspace.paneForItem(previous).destroyItem(previous, true);
+      await lumine.commands.dispatch(workspaceElement, "keybinding-resolver:toggle");
+      const current = lumine.workspace.getBottomDock().getActivePaneItem();
+      expect(current).not.toBe(previous);
+      expect(previous.disposables.disposed).toBeTrue();
+      expect(current.element.querySelector(".panel-empty-state").textContent).toBe("Press any key");
+    });
+  });
+
   describe("when the keybinding-resolver:toggle event is triggered", () => {
     function deferred() {
       let resolve;
