@@ -17,6 +17,7 @@
   }
 
   .panel-body {
+    position: relative;
     flex: 1 1 auto;
     min-width: 0;
     min-height: 0;
@@ -45,6 +46,7 @@
 
     /* move icon so text is aligned when wrapped */
     .command {
+      position: relative;
       padding-left: var(--ui-icon-size);
       &:before {
         position: absolute;

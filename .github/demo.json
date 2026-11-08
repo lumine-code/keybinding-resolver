@@ -2,7 +2,7 @@
   "title": "keybinding-resolver",
   "description": "Inspect the command and scope resolved by a keyboard shortcut.",
   "recordedOn": "2026-11-08",
-  "sourceRevision": "458c1e709b11fdb42f81138952c272ad183a898c",
+  "sourceRevision": "ce7e59c7b6b41f0ee49bea105d142e95c81ed907",
   "themeSourceRevision": "f58b9dc0acee7dc3af6970a23d487a18c7089bc7",
   "mode": "normal",
   "fontSettings": "default",
@@ -29,14 +29,14 @@
       "workingTreeHash": "47f2dec665730f68bb43eb43914ff7fec899d8b770dc1314bba978c4801eb23b"
     },
     "package": {
-      "revision": "458c1e709b11fdb42f81138952c272ad183a898c",
+      "revision": "ce7e59c7b6b41f0ee49bea105d142e95c81ed907",
       "dirty": true,
-      "workingTreeHash": "fae4638d25b573e4edf6d611604f9bd8378322342fc76d95a90748b9c67aadf6"
+      "workingTreeHash": "7d5543a8c4faee24e3a7b214b9792c5d2e731e6c79ead2ab925253509e30b068"
     },
     "keybinding-resolver": {
-      "revision": "458c1e709b11fdb42f81138952c272ad183a898c",
+      "revision": "ce7e59c7b6b41f0ee49bea105d142e95c81ed907",
       "dirty": true,
-      "workingTreeHash": "fae4638d25b573e4edf6d611604f9bd8378322342fc76d95a90748b9c67aadf6"
+      "workingTreeHash": "7d5543a8c4faee24e3a7b214b9792c5d2e731e6c79ead2ab925253509e30b068"
     },
     "language-gfm": {
       "revision": "09e0f4b4c2873bfe1a0bcbfd49f8b80d904ba17f",
@@ -65,7 +65,7 @@
       "label": "Inspect the command and scope resolved by a keyboard shortcut.",
       "width": 1100,
       "height": 500,
-      "sha256": "b1740995d265d621477cb2d636b724f0f9d79d4d59e1e4d3ff8b3efffaf21caf"
+      "sha256": "868494f6a6429177d158acf5c8cee0a4f01658827c68d8f4e52539999ffe5f73"
     }
   ]
 }
