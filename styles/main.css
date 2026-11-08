@@ -1,10 +1,11 @@
 .keybinding-resolver {
-  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
 
   .panel-heading {
-    position: sticky;
-    top: 0;
-    z-index: 1;
+    flex: none;
     border-bottom: 1px solid var(--panel-heading-border-color);
 
     /* tone down the theme's solid info badge: the keystroke updates on every
@@ -16,10 +17,16 @@
   }
 
   .panel-body {
-    padding: 0 var(--ui-spacing);
+    flex: 1 1 auto;
+    min-width: 0;
+    min-height: 0;
+    overflow: auto;
+    padding: 0;
   }
 
   table {
+    width: 100%;
+
     tr:not(:last-child) {
       border-bottom: 1px solid var(--base-border-color);
     }

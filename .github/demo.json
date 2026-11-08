@@ -1,9 +1,9 @@
 {
   "title": "keybinding-resolver",
   "description": "Inspect the command and scope resolved by a keyboard shortcut.",
-  "recordedOn": "2026-11-05",
-  "sourceRevision": "f7d3b9e835fa9dcf60c19a0574ac2a3d9c1151f3",
-  "themeSourceRevision": "6e7e9f93cc5b0612b4631e06d0b80e5ca88a7302",
+  "recordedOn": "2026-11-08",
+  "sourceRevision": "458c1e709b11fdb42f81138952c272ad183a898c",
+  "themeSourceRevision": "f58b9dc0acee7dc3af6970a23d487a18c7089bc7",
   "mode": "normal",
   "fontSettings": "default",
   "scenario": "demo.js",
@@ -24,27 +24,27 @@
   "privacy": { "version": 1, "location": "neutral", "textChecked": true },
   "sources": {
     "editor": {
-      "revision": "55e7d15c5f86ea3ff86c21a599f40b4a753e71fd",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "dd8ef5ee5ef5136f08ae71b7cfa233b34b3a4341",
+      "dirty": true,
+      "workingTreeHash": "47f2dec665730f68bb43eb43914ff7fec899d8b770dc1314bba978c4801eb23b"
     },
     "package": {
-      "revision": "f7d3b9e835fa9dcf60c19a0574ac2a3d9c1151f3",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "458c1e709b11fdb42f81138952c272ad183a898c",
+      "dirty": true,
+      "workingTreeHash": "fae4638d25b573e4edf6d611604f9bd8378322342fc76d95a90748b9c67aadf6"
     },
     "keybinding-resolver": {
-      "revision": "f7d3b9e835fa9dcf60c19a0574ac2a3d9c1151f3",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "458c1e709b11fdb42f81138952c272ad183a898c",
+      "dirty": true,
+      "workingTreeHash": "fae4638d25b573e4edf6d611604f9bd8378322342fc76d95a90748b9c67aadf6"
     },
     "language-gfm": {
-      "revision": "dbdfa0d7eb55a25a9cd6e4b7f8b388bc5d99dc6f",
+      "revision": "09e0f4b4c2873bfe1a0bcbfd49f8b80d904ba17f",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "one-theme": {
-      "revision": "6e7e9f93cc5b0612b4631e06d0b80e5ca88a7302",
+      "revision": "f58b9dc0acee7dc3af6970a23d487a18c7089bc7",
       "dirty": false,
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
@@ -65,7 +65,7 @@
       "label": "Inspect the command and scope resolved by a keyboard shortcut.",
       "width": 1100,
       "height": 500,
-      "sha256": "5f7d12a6da38bd3f0a23852daf30c42315efe076864e84382b2c6ea1d5c67307"
+      "sha256": "b1740995d265d621477cb2d636b724f0f9d79d4d59e1e4d3ff8b3efffaf21caf"
     }
   ]
 }
