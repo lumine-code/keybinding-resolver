@@ -190,9 +190,7 @@ module.exports = class KeyBindingResolverView {
           <tbody>
             {this.partiallyMatchedBindings.map((binding) => (
               <tr className="unused">
-                <td className="copy" onclick={() => this.copyKeybinding(binding)}>
-                  <span className="icon icon-clippy" />
-                </td>
+                {this.renderCopyButton(binding)}
                 <td className="command">{binding.command}</td>
                 <td className="keystrokes">{binding.keystrokes}</td>
                 <td className="selector">{binding.selector}</td>
@@ -209,9 +207,7 @@ module.exports = class KeyBindingResolverView {
       if (this.usedKeyBinding) {
         usedKeyBinding = (
           <tr className="used">
-            <td className="copy" onclick={() => this.copyKeybinding(this.usedKeyBinding)}>
-              <span className="icon icon-clippy" />
-            </td>
+            {this.renderCopyButton(this.usedKeyBinding)}
             <td className="command">{this.usedKeyBinding.command}</td>
             <td className="selector">{this.usedKeyBinding.selector}</td>
             <td
@@ -229,9 +225,7 @@ module.exports = class KeyBindingResolverView {
             {usedKeyBinding}
             {this.unusedKeyBindings.map((binding) => (
               <tr className="unused">
-                <td className="copy" onclick={() => this.copyKeybinding(binding)}>
-                  <span className="icon icon-clippy" />
-                </td>
+                {this.renderCopyButton(binding)}
                 <td className="command">{binding.command}</td>
                 <td className="selector">{binding.selector}</td>
                 <td className="source" onclick={() => this.openKeybindingFile(binding.source)}>
@@ -241,9 +235,7 @@ module.exports = class KeyBindingResolverView {
             ))}
             {this.unmatchedKeyBindings.map((binding) => (
               <tr className="unmatched">
-                <td className="copy" onclick={() => this.copyKeybinding(binding)}>
-                  <span className="icon icon-clippy" />
-                </td>
+                {this.renderCopyButton(binding)}
                 <td className="command">{binding.command}</td>
                 <td className="selector">{binding.selector}</td>
                 <td className="source" onclick={() => this.openKeybindingFile(binding.source)}>
@@ -255,6 +247,20 @@ module.exports = class KeyBindingResolverView {
         </table>
       );
     }
+  }
+
+  renderCopyButton(binding) {
+    return (
+      <td>
+        <button
+          type="button"
+          className="copy icon-button icon icon-clippy"
+          attributes={{ "aria-label": `Copy keybinding for ${binding.command}` }}
+          title="Copy keybinding"
+          onclick={() => this.copyKeybinding(binding)}
+        />
+      </td>
+    );
   }
 
   isInAsarArchive(pathToCheck) {
