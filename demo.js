@@ -8,9 +8,10 @@ module.exports = {
     const { lumine, state, fixture, open } = context;
     state.editor = await open("more/README.md");
     await lumine.project.setPaths([fixture("more")]);
-    const keymap = fixture("more/keymap.json");
+    const keymapName = "keymap.json";
+    const keymap = fixture(`more/${keymapName}`);
     state.keymap = lumine.keymaps.add(
-      keymap,
+      keymapName,
       JSON.parse(require("node:fs").readFileSync(keymap, "utf8")),
     );
   },
