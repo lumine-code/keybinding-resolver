@@ -2,7 +2,7 @@
   "title": "keybinding-resolver",
   "description": "Inspect the command and scope resolved by a keyboard shortcut.",
   "recordedOn": "2026-11-26",
-  "sourceRevision": "1e78d37e2fba648c23da683fc0ca845f3589d5c4",
+  "sourceRevision": "6ffe8ab35bda3669bb15d1574ca087db0943cf41",
   "themeSourceRevision": "0f2c0e4518aa26315df6f13a10792493531b180b",
   "mode": "normal",
   "fontSettings": "default",
@@ -24,19 +24,19 @@
   "privacy": { "version": 1, "location": "workspace-scratch", "textChecked": true },
   "sources": {
     "editor": {
-      "revision": "3fd6839aae4057f9536f8d78bcdd6e14541e7cb1",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "f9eaab26dcb826699bae92050fa919330d1930aa",
+      "dirty": true,
+      "workingTreeHash": "aa0ef368575b505f538d18a75760bd6d02511034e95643ae0fe4629383a05cc1"
     },
     "package": {
-      "revision": "1e78d37e2fba648c23da683fc0ca845f3589d5c4",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "6ffe8ab35bda3669bb15d1574ca087db0943cf41",
+      "dirty": true,
+      "workingTreeHash": "a65761b9df2bbbf19092c8b11dd34ecdb53cc02ad4662d9ac957c667449b121a"
     },
     "keybinding-resolver": {
-      "revision": "1e78d37e2fba648c23da683fc0ca845f3589d5c4",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "6ffe8ab35bda3669bb15d1574ca087db0943cf41",
+      "dirty": true,
+      "workingTreeHash": "a65761b9df2bbbf19092c8b11dd34ecdb53cc02ad4662d9ac957c667449b121a"
     },
     "about": {
       "revision": "46f8adea78cde910408340209124fdb6902341c3",
@@ -60,8 +60,8 @@
     },
     "deprecation-cop": {
       "revision": "77953d4945f878108eefda51a2201ef00fd05567",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "dirty": true,
+      "workingTreeHash": "e6d765b0836efd8a91f62c19fc9f15b15953ad170533f8185f61ef11804b227b"
     },
     "dev-live-reload": {
       "revision": "18ec88f9b3d8aba55634137fe6472b148129dd84",
@@ -235,23 +235,23 @@
     },
     "notifications": {
       "revision": "eeae513a3aedb8ec7c0b0e0bb59436a79ae7660f",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "dirty": true,
+      "workingTreeHash": "83a9b88f356786444976bc9ea3ec12516a7eb363aad3f3d362a4039ffe38c9e9"
     },
     "one-theme": {
       "revision": "0f2c0e4518aa26315df6f13a10792493531b180b",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "dirty": true,
+      "workingTreeHash": "b6ee5bef3d3236a2db8c1f2429210f44e2fdc70d7ebe0b3aeade945bde8d3ff5"
     },
     "search-panel": {
       "revision": "e0ec107b3e947dce3718323f418556cf7e135e6e",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "dirty": true,
+      "workingTreeHash": "37e80ac97a3e5e6e174f6dec2932d8f2ade45b5fc0cd31859571660cf64d63d9"
     },
     "settings-view": {
-      "revision": "73e5615992ef4d6edad5e515349e33e7bf45ac37",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "2e2941602b5e84c37da4c5a05255c842a42b029f",
+      "dirty": true,
+      "workingTreeHash": "67e41111e8f922923d6fe9ba34372ea71c6f7341e640ab8589df29d8008260a5"
     },
     "snippets": {
       "revision": "37d011bebe6cc925910e7387a3e2da8270c453fc",
@@ -259,19 +259,19 @@
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "status-bar": {
-      "revision": "7612190ea7d75cad65ffa3a3b140cc8db1db0da3",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "c0531d63ff7148503b68f189f4fc6d07b038404b",
+      "dirty": true,
+      "workingTreeHash": "0858a9b6cbd1d0074f0285ee97f57f059c46210f15037f2e80140dc5d1a96e5a"
     },
     "styleguide": {
       "revision": "265168334ba3671207d95ac602d4939ce36c1476",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "dirty": true,
+      "workingTreeHash": "46a25d21a8e85061c2a09eb84b2879f8ebb96a689465bf96d6a2fdeb587a1179"
     },
     "tabs": {
       "revision": "7312f6b9d354f51edf1c67a57197016f5a041736",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "dirty": true,
+      "workingTreeHash": "d1f1eab5c2bfe9eb1785cf6562de2c9387bf7c37d3cab4810551dd18bbbe13ef"
     },
     "timecop": {
       "revision": "88103aa11e00888cea4d1919da4623b45ee6f594",
@@ -279,14 +279,14 @@
       "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "title-bar": {
-      "revision": "8850d876504f9a33626b271eb928deb40c110a33",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "revision": "dddcf45f651d043da8e68aab8df73c71f178b71f",
+      "dirty": true,
+      "workingTreeHash": "6d2a29040ea95e0a404fec1579fddfca48e3bac7b1eae7ec040b5ffbed69644f"
     },
     "tree-view": {
       "revision": "edaf681fd85ce895cb37aed929cc4159e70c2328",
-      "dirty": false,
-      "workingTreeHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "dirty": true,
+      "workingTreeHash": "c81fcfcc0804c58426e679ba9f9c7b53e6477f975f3301796e4ca344eceb79c4"
     },
     "whitespace": {
       "revision": "726d97897b1d53c851b65d99c81ef11711b591a6",
@@ -315,7 +315,7 @@
       "label": "Inspect the command and scope resolved by a keyboard shortcut.",
       "width": 1100,
       "height": 500,
-      "sha256": "f314f7ce18bb3cdc29c96b492da6ad0c04472c477ed2ebef8fdcb3e66b9e89f1"
+      "sha256": "f61d1d6ea7b9e3dc7ffc0c815b4d15a3ec0327d4c84a7cfd9ece67f61f542f1a"
     }
   ]
 }

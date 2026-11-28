@@ -254,7 +254,7 @@ module.exports = class KeyBindingResolverView {
       <td>
         <button
           type="button"
-          className="copy icon-button icon icon-clippy"
+          className="copy native-key-bindings icon icon-clippy"
           attributes={{ "aria-label": `Copy keybinding for ${binding.command}` }}
           title="Copy keybinding"
           onclick={() => this.copyKeybinding(binding)}

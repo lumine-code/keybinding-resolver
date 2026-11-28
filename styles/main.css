@@ -44,6 +44,20 @@
       color: var(--text-color-subtle);
     }
 
+    .copy {
+      appearance: none;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline: 1px solid var(--accent-indicator-color);
+      }
+    }
+
     /* move icon so text is aligned when wrapped */
     .command {
       position: relative;
